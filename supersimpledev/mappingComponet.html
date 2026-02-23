@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+
+        /**
+ * Challenge: create a page that displays your favorite jokes
+ * - Create a Joke component in its own file.
+ * - Import and render 4-5 <Joke /> components
+ * - Each Joke should receive a "setup" prop and a "punchline" prop
+ *   and render those however you'd like
+ * - Use your favorite 2-part jokes (setup & punchline), or check
+ *   jokes.md file for some examples.
+ * 
+ * EXTRA CREDIT:
+ * Some jokes are only a punchline with no setup:
+ * ()
+ * E.g.: "It’s hard to explain puns to kleptomaniacs because 
+ * they always take things literally."
+ * 
+ * If you don't pass in a "question" prop, how might you make it only 
+ * show the punchline?
+ */
+        function Joke(props) {
+            if (props.Setup) {
+                return (
+                    <>
+                        <p>SetUp:{props.Setup}</p>
+                        <p>Puncline:{props.Punchline}</p>
+                        <hr />
+                    </>
+                )
+            }
+            return (
+                <>
+                    <p>Punchline{props.Punchline}</p>
+                    <hr />
+                </>
+            )
+        }
+        //array of properties
+        const jokesArray = [
+            {
+                Setup: "I got my daughter a fridge for her birthday.",
+                Punchline: "I can't wait to see her face light up when she opens it."
+            },
+            {
+                Setup: "How did the hacker escape the police?",
+                Punchline: "He just ransomware!"
+            },
+            {
+                Setup: "Why don't pirates travel on mountain roads?",
+                Punchline: "Scurvy."
+            },
+            {
+                Setup: " Why do bees stay in the hive in the winter?",
+                Punchline: " Swarm."
+            },
+            {
+                Setup: "What's the best thing about Switzerland?",
+                Punchline: "I don't know, but the flag is a big plus!"
+            }
+
+        ]
+        const properties=jokesArray.map((jokes)=>{
+            return <Joke Setup={jokes.Setup} Punchline={jokes.Punchline} />
+        })
+        function Page() {
+            return (
+                <>
+                {properties}
+                </>
+            )
+        }
+        const container = document.querySelector(".js-container")
+        const root = ReactDOM.createRoot(container)
+        root.render(<Page />)
+    </script>
+</body>
+
+</html>
