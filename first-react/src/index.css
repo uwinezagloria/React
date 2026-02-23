@@ -1,9 +1,15 @@
+/* body for react facts project
 body{
     margin: 0;
     font-family:"Inter" ,sans-sarif;
     background-color: #21222A;
     color:white;
-}
+} */
+ body{
+    margin:0;
+     
+   
+ }
 .nav-list{
     list-style: none;
     display: flex;
@@ -57,4 +63,76 @@ body{
 .facts-list>li::marker{
     color:#61DAFB;
     font-size: 1.5rem;
+}
+.travel-header{
+    background-color:#F55A5A;
+    height: 55px;
+    
+}
+.travel-header{
+    display: flex;
+    align-items: center;
+    gap:7px;
+    justify-content: center;
+     color:white;
+}
+.travel-header>img{
+    width:24px;
+}
+.travel-header> h1{
+    font-size: 0.9rem;
+    font-weight: 500;
+    font-family: "Inter";
+    
+}
+.entry-article{
+     margin: 45px 40px;
+    display:flex;
+    align-items: center;
+    gap:20px;
+}
+.main-image{
+   width: 125px;
+    height: 168px;
+    overflow: hidden; 
+    border-radius: 5px;
+    flex-shrink: 0;
+}
+.main-image>img{
+   height: 100%;
+    width: 100%;
+    object-fit: cover;  
+    flex-shrink: 0;
+}
+.info-container span.country {
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    margin-right: 12px;
+}
+
+.info-container a {
+    color: #2B283A;
+    font-size: 0.7rem;
+}
+
+.info-container a:visited {
+    color: #918E9B;
+}
+
+.info-container h2.entry-title {
+    margin-top: 7px;
+    margin-bottom: 17px;
+}
+
+.info-container p.trip-dates {
+    font-weight: bold;
+}
+
+.info-container p.entry-text {
+    line-height: 1.5;
+    font-size: 0.8rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
 }
