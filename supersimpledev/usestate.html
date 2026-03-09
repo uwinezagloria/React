@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+    <style>
+        * {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #262626;
+    color: #D9D9D9;
+    padding: 20px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main > .title {
+    text-align: center;
+}
+
+main > .value {
+    background-color: white;
+    border: none;
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #262626;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+    </style>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+        function App(props){
+            /**
+     * Challenge: Replace our hard-coded "Yes" on the page with 
+     * some state initiated with React.useState()
+     */
+          /* let result= React.useState("yes")
+console.log(result) */
+// we can also make this by desctructurin the array from React.useState
+let [result,func]=React.useState("Yes")
+   console.log(result)
+   function handleClick(){
+    func("Definitely")
+   }
+return (
+    <main>
+        <h1>Is state  important to know?</h1>
+         {/* without destructuring 
+            <button>{result[0]}</button> */}
+            <button onClick={handleClick}>{result}</button>
+    </main>
+)
+        }
+const button=document.querySelector(".js-container")
+const root=ReactDOM.createRoot(button)
+root.render(<App result="yes" />)
+    </script>
+  </body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>count state</title>
+    <style>
+        * {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #262626;
+    color: #D9D9D9;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.container > h1 {
+    font-size: 1.5rem;
+    margin-top: 0;
+}
+
+.counter {
+    display: flex;
+    align-items: flex-end;
+    align-self: center;
+    margin-top: 40px;
+}
+
+.counter > button {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    background-color: #737373;
+    color: #D9D9D9;
+    font-size: 1.5rem;
+}
+
+.counter > button:hover {
+    background-color: #404040;
+    color: #D9D9D9;
+}
+
+.count {
+    background-color: white;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #262626;
+    margin-block: 0 10px;
+    font-size: 2rem;
+}
+
+.plus {
+    margin-left: -20px;
+}
+
+.minus {
+    margin-right: -20px;
+    z-index: 1;
+}
+    </style>
+</head>
+<body>
+      <div class="js-container"></div>
+     <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+             /**
+     * Challenge: 
+     * Create state to track our count value (initial value is 0)
+     * Don't forget to replace the hard-coded "0" with your new state
+     */
+        const App=()=>{
+            let [number,func]=React.useState(0)
+            console.log(number)
+
+       function increment(){
+         
+         func(oldvalue=>oldvalue+1)
+         
+       }
+       function decrement(){
+         func(oldValue=>oldValue-1) 
+       }
+             return (
+        <main className="container">
+            <h1>How many times will Bob say "state" in this section?</h1>
+            <div className="counter">
+                <button className="minus" aria-label="Decrease count" onClick={decrement}>–</button>
+                <h2 className="count">{number}</h2>
+                <button className="plus" aria-label="Increase count" onClick={increment}>+</button>
+            </div>
+        </main>
+    )
+        }
+const container=document.querySelector(".js-container")
+const root=ReactDOM.createRoot(container)
+root.render(<App/>)
+    </script>
+</body>
+</html>

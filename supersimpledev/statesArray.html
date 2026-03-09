@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+  </head>
+  <style>
+    * {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #70B85D;
+    color: white;
+    padding: 20px;
+    font-size: 1.3rem;
+}
+
+main {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+}
+
+button {
+    width: 100%;
+    max-width: 300px;
+    background-color: transparent;
+    padding: 1rem;
+    color: white;
+    border: 2px solid white;
+    border-radius: 50px;
+    cursor: pointer;
+    font-family: 'Karla', sans-serif;
+    margin-bottom: 20px;
+}
+
+button:hover {
+    background-color: #FFFEF1;
+    color: #2C5E2E;
+}
+
+button:focus {
+    outline: 0;
+}
+
+p {
+    margin-block: 10px;
+    font-size: 2rem;
+}
+  </style>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+
+
+ function App() {
+    const [myFavoriteThings, setMyFavoriteThings] = React.useState([])
+
+    const allFavoriteThings = ["💦🌹", "😺", "💡🫖", "🔥🧤", "🟤🎁",
+        "🐴", "🍎🥧", "🚪🔔", "🛷🔔", "🥩🍝"]
+    const thingsElements = myFavoriteThings.map(thing => <p key={thing}>{thing}</p>)
+
+    function addFavoriteThing() {
+        setMyFavoriteThings(
+            prevFavThings => [
+                ...prevFavThings,
+                allFavoriteThings[prevFavThings.length]
+            ]
+        )
+    }
+
+    return (
+        <main>
+            <button onClick={addFavoriteThing}>Add item</button>
+            <section aria-live="polite">
+                {thingsElements}
+            </section>
+        </main>
+    )
+}
+      const container = document.querySelector('.js-container');
+      ReactDOM.createRoot(container).render(<App/>);
+    </script>
+  </body>
+</html>
