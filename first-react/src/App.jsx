@@ -37,16 +37,21 @@ function App() {
 })*/} 
   return (
     <>
-      {/*<Page></Page>*/}
+    <Header />
+      <Main />
+
+      <>
+        {/*<Page></Page>*/}
       {/* react fact project
      <NavBar />
      <Main /> */}
 {/* travel journal project compoents
 <Header />
       <main>{dataArray}</main> */}
-      <Header />
-      <Main />
+      
+      </>
     </>
+    
   );
 }
 export default App;
