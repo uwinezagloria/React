@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+  </head>
+  <style>
+    * {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0C4A6E;
+    margin: 0;
+    font-family: "Inter", sans-serif;
+}
+
+main {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    background-color: white;
+    width: 200px;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    height: 350px;
+}
+
+.card .avatar {
+    width: 100%;
+    padding: 10%;
+    padding-bottom: 0;
+}
+
+.card .name {
+    margin-block: 13px;
+    color: #333333;
+}
+
+.card .info {
+    padding: 10px;
+}
+
+.card .favorite {
+    width: 25px;
+    cursor: pointer;
+}
+
+.card .contact {
+    font-size: 0.75rem;
+    color: gray;
+    margin-block: 7px;
+}
+
+.card .favorite-button {
+    border: none;
+    background: transparent;
+}
+
+.card .favorite-button:active {
+    transform: none;
+    box-shadow: none;
+}
+  </style>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+
+ 
+  function App() {
+    const [contact, setContact] = React.useState({
+        firstName: "John",
+        lastName: "Doe",
+        phone: "+1 (212) 555-1212",
+        email: "itsmyrealname@example.com",
+        isFavorite: true
+    })
+    /**
+     * Challenge: Use a ternary to determine which star image variable
+     * should be used based on the `contact.isFavorite` property. Test 
+     * your results by manually changing the isFavorite value in state.
+     * 
+     * `true` => starFilled
+     * `false` => starEmpty
+     */
+    /**
+     * Challenge:
+     * Update the following:
+     * - aria-pressed should reflect the same value as contact.isFavorite.
+     * - aria-label should switch to say "Remove from favorites" if
+     *   contact.isFavorite is `true`.
+     * - img alt should say "filled star icon" when it is filled.
+     */
+   
+    
+    function toggleFavorite() {
+        setContact(prevContact => ({
+            ...prevContact,
+            isFavorite: !prevContact.isFavorite
+        }))
+    }
+
+ let starIcon = contact.isFavorite?"./images/star-filled.png":"./images/star-empty.png"
+let avatar="./images/user.png"
+    return (
+        <main>
+            <article className="card">
+                <img
+                    src={avatar}
+                    className="avatar"
+                    alt="User profile picture of John Doe"
+                />
+                <div className="info">
+                    <button
+                        onClick={toggleFavorite}
+                        aria-pressed={contact.isFavorite}
+                        className="favorite-button"
+                    >
+                        <img
+                            src={starIcon}
+                            alt={contact.isFavorite?"Remove from favorites":"empty star icon"}
+                            
+                            className="favorite"
+                        />
+                    </button>
+                    <h2 className="name">
+                    {contact.firstName } {contact.lastName}
+                    </h2>
+                    <p className="contact">{contact.phone}</p>
+                    <p className="contact">{contact.email}</p>
+                </div>
+
+            </article>
+        </main>
+    )
+}
+
+      const container = document.querySelector('.js-container');
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>
