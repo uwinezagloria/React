@@ -1,57 +1,75 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title>React Basics</title>
-  </head>
-  <style>
-  * {
-    box-sizing: border-box;
-}
+</head>
+<style>
+    * {
+        box-sizing: border-box;
+    }
 
-body {
-    margin: 0;
-    padding: 10px;
-    background-color: #2DD4BF;
-    color: #262626;
-}
+    body {
+        margin: 0;
+        padding: 10px;
+        background-color: #2DD4BF;
+        color: #262626;
+    }
 
-h1 {
-    text-align: center;
-}
+    h1 {
+        text-align: center;
+    }
 
-form {
-    padding-inline: 40px;
-    display: flex;
-    flex-direction: column;
-}
+    form {
+        padding-inline: 40px;
+        display: flex;
+        flex-direction: column;
+    }
 
-label {
-    margin-bottom: 4px;
-}
+    label {
+        margin-bottom: 4px;
+    }
 
-input {
-    border-radius: 100px;
-    border: 1px solid #0D9488;
-    height: 2rem;
-    text-indent: 10px;
-}
+    input {
+        border-radius: 100px;
+        border: 1px solid #0D9488;
+        height: 2rem;
+        text-indent: 10px;
+    }
 
-button {
-    border-radius: 100px;
-    border: 1px solid #0D9488;
-    padding: 10px 30px;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: all 0.1s ease-in-out;
-}
+    button {
+        border-radius: 100px;
+        border: 1px solid #0D9488;
+        padding: 10px 30px;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: all 0.1s ease-in-out;
+    }
 
-button:hover {
-    background-color: #115E59;
-    border-color: #042F2E;
-    color: white;
-}
-  </style>
-  <body>
+    button:hover {
+        background-color: #115E59;
+        border-color: #042F2E;
+        color: white;
+    }
+
+    fieldset {
+        border: 1px solid #262626;
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    textarea {
+        margin-bottom: 20px;
+    }
+
+    input[type="checkbox"],
+    input[type="radio"] {
+        margin-right: 10px;
+    }
+</style>
+
+<body>
     <div class="js-container"></div>
 
     <script src="https://unpkg.com/supersimpledev/react.js"></script>
@@ -59,35 +77,94 @@ button:hover {
 
     <script src="https://unpkg.com/supersimpledev/babel.js"></script>
     <script type="text/babel">
-function App(){
-    function handleSubmit(event){
-event.preventDefault()
-const formElement=event.currentTarget
-const formData=new FormData(formElement)
-console.log(formData)
-console.log(formData.get("email"))
-console.log(event)
-formElement.reset()
-    }
-    return (
-        <section>
-            <h1>Sign Up Form</h1>
-             <form onSubmit={handleSubmit} method="POST">
-            <label htmlFor="email">Email:
-                <input type="email" name="email" placeholder="gogo@gmail.com" />
-            </label>
-            <br/>
-            <label htmlFor="password">Password:
-                <input type="password" name="password" />
-            </label>
-            <br/>
-            <button type="submit">Submit</button>
-        </form> </section>
-       
-    )
-}
-      const container = document.querySelector('.js-container');
-      ReactDOM.createRoot(container).render(<App />);
+
+        function App() {
+            /**
+   * Challenge: grab the employment status from the form and log it
+   * to the console. (Remember to select one of the radios before submitting)
+   * 
+   * Note: This won't work the way you might expect quite yet!
+   */
+            function handleSubmit(event) {
+                event.preventDefault()
+                const formElement = event.currentTarget
+                const formData = new FormData(formElement)
+                const employeeStatus=formData.get("employmentStatus")
+                const dietaryRestrictions=formData.getAll("dietaryRestrictions") // when we use get we get only first elemennt to be checkedthat why we prefer using getAll to get array of all checked items
+                const favColor=formData.get("favColor")
+                console.log(employeeStatus)
+                console.log(dietaryRestrictions)
+                console.log(favColor)
+                console.log(formData.get("email"))
+                console.log(event)
+                formElement.reset()
+            }
+            return (
+                <section>
+                    <h1>Sign Up Form</h1>
+                    <form onSubmit={handleSubmit} method="POST">
+                        <label htmlFor="email">Email: </label>
+                        <input type="email" name="email" placeholder="gogo@gmail.com" defaultValue="gloria@gmail.com" />
+
+                        <br />
+                        <label htmlFor="password">Password: </label>
+                        <input type="password" name="password"  defaultValue="Password123"/>
+
+                        <br />
+                        <label htmlFor="description"> Description:</label>
+                        <textarea name="description" id="description" defaultValue="This is description"></textarea>
+                        {/* radio we use it to select one thing and to set default checked we use defaultChecked={true} not defaultVlaue as we did above and when we want to display select item using formData it return on if something is selected otherwise it returns null so we need to set value attribute on every radio so that we can get the value not getttingn on or null*/}
+                        <fieldset>
+                            <legend>Employment Status:</legend>
+                            <label>
+                                <input type="radio" name="employmentStatus" value="unemployed" />
+                                Unemployed
+                            </label>
+                            <label>
+                                <input type="radio" name="employmentStatus" value="part-time" defaultChecked={true}/>
+                                Part-time
+                            </label>
+                            <label>
+                                <input type="radio" name="employmentStatus" value="full-time" />
+                                Full-time
+                            </label>
+                        </fieldset>
+                        {/*  checkbox to get all selected we use getAll method and to set default value to be checked we use defaultChecked={true} not defaultValue*/}
+                         <fieldset>
+          <legend>Dietary restrictions:</legend>
+          <label>
+            <input type="checkbox" name="dietaryRestrictions" value="kosher" />
+            Kosher
+        </label>
+          <label>
+            <input type="checkbox" name="dietaryRestrictions" value="vegan" />
+            Vegan
+        </label>
+          <label>
+            <input type="checkbox" name="dietaryRestrictions" defaultChecked={true} value="gluten-free" />
+            Gluten-free
+        </label>
+        </fieldset>
+        {/* select and option*/}
+        <label htmlFor="favColor">what is your favorite color?</label>
+        <select name="favColor" defaultValue="" required>
+            <option value="" disabled>--choose color--</option>
+<option value="red">Red</option>
+<option value="yellow">Yellow</option>
+<option value="orange">Orange</option>
+<option value="white">White</option>
+<option value="black">Black</option>
+<option value="indigo">Indigo</option>
+        </select>
+                        <button type="submit">Submit</button>
+
+                    </form> </section>
+
+            )
+        }
+        const container = document.querySelector('.js-container');
+        ReactDOM.createRoot(container).render(<App />);
     </script>
-  </body>
+</body>
+
 </html>
