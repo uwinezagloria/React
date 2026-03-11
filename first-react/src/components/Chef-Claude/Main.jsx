@@ -10,16 +10,25 @@ export default function Main(){
     })
 
     
-function handleSubmit(event){
+ /* using form submisson
+  function handleSubmit(event){
     event.preventDefault();
     const formdata=new FormData(event.currentTarget);
     const newIngredient=formdata.get("ingredient")
      setIngredients(prevIngredients=>[...prevIngredients,newIngredient])
-}
- 
+} */
+/**
+     * Challenge: use form action instead of onSubmit to
+     * handle the data from the form
+     */
+ function getInputs(formData){
+const ingredient=formData.get("ingredient")
+setIngredients(prevIngredients=>[...prevIngredients,ingredient])
+ }
     return (
         <main className="chef-claude-main">
-            <form className="add-ingredient-form" onSubmit={handleSubmit}>
+            {/*<form className="add-ingredient-form" onSubmit={handleSubmit}> */}
+            <form action={getInputs} className="add-ingredient-form">
                  <input
             type="text"
             placeholder="e.g.oregano"

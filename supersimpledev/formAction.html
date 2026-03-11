@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+  </head>
+  <style>
+  * {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 10px;
+    background-color: #2DD4BF;
+    color: #262626;
+}
+
+h1 {
+    text-align: center;
+}
+
+form {
+    padding-inline: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 4px;
+}
+
+input {
+    border-radius: 100px;
+    border: 1px solid #0D9488;
+    height: 2rem;
+    text-indent: 10px;
+}
+
+button {
+    border-radius: 100px;
+    border: 1px solid #0D9488;
+    padding: 10px 30px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.1s ease-in-out;
+}
+
+button:hover {
+    background-color: #115E59;
+    border-color: #042F2E;
+    color: white;
+}
+  </style>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+function App(){
+    // using form action we do not need to use event we get formData and no need to reset and preventdefault behaviour
+    function signUp(formData){
+
+console.log(formData.get("email"))
+console.log(formData.get("password"))
+
+    }
+    return (
+        <section>
+            <h1>Sign Up Form</h1>
+             <form action={signUp} >
+            <label htmlFor="email">Email:
+                <input type="email" name="email" placeholder="gogo@gmail.com" />
+            </label>
+            <br/>
+            <label htmlFor="password">Password:
+                <input type="password" name="password" />
+            </label>
+            <br/>
+            <button type="submit">Submit</button>
+        </form> </section>
+       
+    )
+}
+      const container = document.querySelector('.js-container');
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>
