@@ -92,13 +92,24 @@
                 const employeeStatus=formData.get("employmentStatus")
                 const dietaryRestrictions=formData.getAll("dietaryRestrictions") // when we use get we get only first elemennt to be checkedthat why we prefer using getAll to get array of all checked items
                 const favColor=formData.get("favColor")
-                console.log(employeeStatus)
+                /*console.log(employeeStatus)
                 console.log(dietaryRestrictions)
                 console.log(favColor)
                 console.log(formData.get("email"))
-                console.log(event)
-                formElement.reset()
+                console.log(event) */
+                /*  we can not access each individual element one by one if we had many form element it can be difficult to
+             maintain individual element instead we use Object.fromEntries*/
+            const data=Object.fromEntries(formData) //when it reach on checbox it willl get only one item the one we set as defaultValue
+            console.log(data)
+            // inorder to have all data we will use spread operator and overide the key of the checkbox to have all checked
+            const allData={
+                ...data,
+                dietaryRestrictions
             }
+            console.log(allData)
+            formElement.reset() 
+            }
+           
             return (
                 <section>
                     <h1>Sign Up Form</h1>

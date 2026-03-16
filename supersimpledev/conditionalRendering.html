@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+        
+
+ function App() {
+    const [unreadMessages, setUnreadMessages] = React.useState([ "b"])
+    
+    /**
+     * Challenge:
+     * Only display the <h1> below if there are unread messages
+     */
+     /**
+     * Challenge:
+     * If there are 0 unread messages, display a paragraph that says "You
+     * have no unread messages". (So, the logic will be the opposite of
+     * what we have for the h1)
+     */
+     /**
+     * Challenge:
+     * - If there are no unread messages, display "You're all caught up!"
+     * - If there's exactly 1 unread message, it should read "You have 
+     *   1 unread message" (singular)
+     * - If there are > 1 unread messages, display "You have <n> unread
+     *   messages" (plural)
+     */
+    return (
+        <div>
+            {/*     {unreadMessages.length>0 &&<h1>You have {unreadMessages.length} unread messages!</h1>}
+            {unreadMessages.length===0 && <h1>There is no unread message!</h1>}*/}
+        {unreadMessages.length===0?<h1>You're all caught up</h1>:unreadMessages.length===1?<h1>You have 
+       1 unread message</h1>:<h1>ou have {unreadMessages.length} unread
+       messages</h1>}
+        </div>
+    )
+}
+
+const container=document.querySelector(".js-container")
+const root=ReactDOM.createRoot(container)
+root.render(<App />)
+    </script>
+  </body>
+</html>
