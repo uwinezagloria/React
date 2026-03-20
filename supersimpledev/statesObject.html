@@ -74,7 +74,26 @@ main {
     <script src="https://unpkg.com/supersimpledev/babel.js"></script>
     <script type="text/babel">
 
- 
+ const Star=({isFilled,starIcon})=>{
+    /**
+     * Challenge: Move the star image into its own component (Star)
+     * - It should receive a prop called `isFilled` that it
+     *   uses to determine which icon it will display. (You'll
+     *   need to import the 2 star icons into that new component first).
+     * - Import and render that component, passing the value of
+     *   `isFavorite` to the new `isFilled` prop.
+     * - Don't worry about the abiliity to flip this value quite yet.
+     *   Instead, you can test if it's working by manually changing
+     *   `isFavorite` in state above.
+     */
+    return(<img
+                            src={starIcon}
+                            alt={isFilled?"Remove from favorites":"empty star icon"}
+                            
+                            className="favorite"
+                        />)
+
+ }
   function App() {
     const [contact, setContact] = React.useState({
         firstName: "John",
@@ -99,8 +118,6 @@ main {
      *   contact.isFavorite is `true`.
      * - img alt should say "filled star icon" when it is filled.
      */
-   
-    
     function toggleFavorite() {
         setContact(prevContact => ({
             ...prevContact,
@@ -124,12 +141,8 @@ let avatar="./images/user.png"
                         aria-pressed={contact.isFavorite}
                         className="favorite-button"
                     >
-                        <img
-                            src={starIcon}
-                            alt={contact.isFavorite?"Remove from favorites":"empty star icon"}
-                            
-                            className="favorite"
-                        />
+                    <Star isFilled={contact.isFavorite} starIcon={starIcon} />
+                        
                     </button>
                     <h2 className="name">
                     {contact.firstName } {contact.lastName}

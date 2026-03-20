@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+    <style>
+        * {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #262626;
+    color: #D9D9D9;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.counter {
+    display: flex;
+    align-items: flex-end;
+    align-self: center;
+    margin-top: 40px;
+}
+
+.counter > button {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    background-color: #737373;
+    color: #D9D9D9;
+    font-size: 1.5rem;
+}
+
+.counter > button:hover {
+    background-color: #404040;
+    color: #D9D9D9;
+}
+
+.count {
+    background-color: white;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #262626;
+    margin-block: 0 10px;
+    font-size: 2rem;
+}
+
+.plus {
+    margin-left: -20px;
+}
+
+.minus {
+    margin-right: -20px;
+    z-index: 1;
+}
+    </style>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+        const Count=({number})=>{
+            /**
+     * Challenge:
+     * - Create a new component called `Count`
+     *    - It should receive a prop called `number`, whose value
+     *      is the current value of our count
+     *    - Have the component render the h2.count element below
+     *      and display the incoming prop `number`
+     * - Replace the h2.count below with an instance of
+     *   the new Count component, passing the correct value
+     *   to its `number` prop.
+     * - After doing this, everything should be working the
+     *   same as before.
+
+     */
+      <h2 className="count">{number}</h2>
+        }
+ function App() {
+    const [count, setCount] = React.useState(0)
+
+    function add() {
+        setCount(prevCount => prevCount + 1)
+    }
+
+    function subtract() {
+        setCount(prevCount => prevCount - 1)
+    }
+    
+    
+
+    return (
+        <main className="container">
+            <div className="counter">
+                <button
+                    className="minus"
+                    onClick={subtract}
+                    aria-label="Decrease count"
+                >-</button>
+<Count number={count} />
+               
+
+                <button
+                    className="plus"
+                    onClick={add}
+                    aria-label="Increase count"
+                >+</button>
+            </div>
+        </main>
+    )
+}
+
+      const container = document.querySelector('.js-container');
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>
+
+

@@ -1,158 +1,35 @@
-/* body for react facts project
-body{
+* {
+    box-sizing: border-box;
+}
+
+body {
     margin: 0;
-    font-family:"Inter" ,sans-sarif;
-    background-color: #21222A;
-    color:white;
-} */
- body{
-    margin:0;
-     
-   
- }
-.nav-list{
-    list-style: none;
-    display: flex;
-}
-.header{
-    display: flex;
-    justify-content: space-between;
-}
-.nav-list-item{
-    margin-left: 10px;
-    font-size: 1.1rem;
-}
-.react-logo{
-    width:55px;
-}
-.heading{
-    height: 90px;
-    
-    padding:30px 25px;
-}
-.navigation{
-    display:flex;
-    align-items: center;
-    gap: 12px;
-    height: 100%;
-}
-.paragraph{
-    color: #61DAFB;
-    font-size: 1.4rem;
-    font-weight:700;
-}
-.main-section {
-    padding: 60px 30px;
-    background-image: url(./src/assets/react-logo-gray.jpg);
-    background-repeat: no-repeat;
-    background-position:right 70%;
+    font-family: Inter, sans-serif;
+    background-color: #FAFAF8;
 }
 
-.main-section > h1 {
-    margin: 0;
-    font-size: 2.4rem;
-}
-
-.facts-list {
-    margin-top: 46px;
-}
-.facts-list > li {
-    padding-block: 10px;
-    line-height: 19px;
-}
-.facts-list>li::marker{
-    color:#61DAFB;
-    font-size: 1.5rem;
-}
-.travel-header{
-    background-color:#F55A5A;
-    height: 55px;
-    
-}
-.travel-header{
+header {
     display: flex;
-    align-items: center;
-    gap:7px;
     justify-content: center;
-     color:white;
-}
-.travel-header>img{
-    width:24px;
-}
-.travel-header> h1{
-    font-size: 0.9rem;
-    font-weight: 500;
-    font-family: "Inter";
-    
-}
-.entry-article{
-     margin: 45px 40px;
-    display:flex;
     align-items: center;
-    gap:20px;
-}
-.main-image{
-   width: 125px;
-    height: 168px;
-    overflow: hidden; 
-    border-radius: 5px;
-    flex-shrink: 0;
-}
-.main-image>img{
-   height: 100%;
-    width: 100%;
-    object-fit: cover;  
-    flex-shrink: 0;
-}
-.info-container span.country {
-    text-transform: uppercase;
-    font-size: 0.7rem;
-    margin-right: 12px;
-}
-
-.info-container a {
-    color: #2B283A;
-    font-size: 0.7rem;
-}
-
-.info-container a:visited {
-    color: #918E9B;
-}
-
-.info-container h2.entry-title {
-    margin-top: 7px;
-    margin-bottom: 17px;
-}
-
-.info-container p.trip-dates {
-    font-weight: bold;
-}
-
-.info-container p.entry-text {
-    line-height: 1.5;
-    font-size: 0.8rem;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;  
-    overflow: hidden;
-}
-.chefClaude-Header{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap:11px;
-    height:80px;
-     background-color: white;
+    gap: 11px;
+    height: 80px;
+    background-color: white;
     box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.10), 0px 1px 2px 0px rgba(0, 0, 0, 0.06);
 }
-.chefClaude-Header>img{
-    width:50px;
-    
+
+header > img {
+    width: 50px;
 }
-.chefClaude-Header>h1{
+
+header > h1 {
     font-weight: 400;
-    
 }
+
+main {
+    padding: 30px 30px 10px;
+}
+
 .add-ingredient-form {
     display: flex;
     justify-content: center;
@@ -179,14 +56,61 @@ body{
     width: 150px;
     font-size: 0.875rem;
     font-weight: 500;
-    
 }
+
 .add-ingredient-form > button::before {
     content: "+";
     margin-right: 5px;
 }
-.chef-claude-main{
-    
-    padding: 30px 30px 10px;
 
+ul.ingredients-list {
+    margin-bottom: 48px;
+}
+
+ul.ingredients-list > li {
+    color: #475467;
+    line-height: 28px;
+}
+
+.get-recipe-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px;
+    background: #F0EFEB;
+    padding: 10px 28px;
+}
+
+.get-recipe-container h3 {
+    font-size: 1.125rem;
+    font-weight: 500;
+    line-height: 24px;
+}
+
+.get-recipe-container p {
+    color: #6B7280;
+    font-size: 0.875rem;
+    line-height: 20px;
+}
+
+.get-recipe-container button {
+    border: none;
+    border-radius: 6px;
+    background: #D17557;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+    color: #FAFAF8;
+    padding: 9px 17px;
+    font-family: Inter, sans-serif;
+    font-size: 0.875rem;
+    cursor: pointer;
+}
+.suggested-recipe-container {
+    color: #475467;
+    line-height: 28px;
+    font-size: 1.125rem;
+    font-weight: 400;
+}
+
+.suggested-recipe-container ul li, .suggested-recipe-container ol li {
+    margin-bottom: 8px;
 }
