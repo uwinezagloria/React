@@ -41,7 +41,7 @@ isChecked:false
   
   const lowerLetter=upperLetter.map((letters)=>letters.toLowerCase())
   const [requirementData,setRequirement]=useState(requirements)
-  const digits=[0,1,2,3,4,5,6,7,8,9]
+  const digits=["0","1","2","3","4","5","6","7","8","9"]
    const [password,setPassword]=useState("")
    
   const getPassowrd=(event)=>{
@@ -52,18 +52,60 @@ isChecked:false
   //toggling requirements
   const togggleRequirement=(value)=>{
     for(let elem of value){
-  
+      if(value.length>=8){
+      setRequirement(prev=>
+         prev.map(req=>{
+          if(req.title==="numberOfChar"){
+            return{...req,isChecked:true} 
+          }
+          return req
+        })
+      )
+    }
+
   if(upperLetter.includes(elem)){
+    //updating requirement for uppercase check
     setRequirement((prev)=>
    prev.map((req)=>{
         if(req.title==="upperchar"){
           return {...req,isChecked:true}
         }
-        console.log(req)
         return req
       })
     )
   }
+  //LOWER CASE
+else if(lowerLetter.includes(elem)){
+  setRequirement(prev=>
+    prev.map(req=>{
+      if(req.title==="lowerchar"){
+ return {...req,isChecked:true}
+      }
+      return req
+    })
+    )}
+    // digits
+    else if(digits.includes(elem)){
+      setRequirement(prev=>
+        prev.map(req=>{
+          if(req.title==="digit"){
+            return {...req,isChecked:true}
+          }
+          return req
+        })
+      )
+    }
+      // otherwise
+      else{
+        setRequirement(prev=>
+          prev.map(req=>{
+            if(req.title==="specialChar"){
+              return {...req,isChecked:true}
+            }
+            return req
+          })
+        )
+      }
 }
 
   }
