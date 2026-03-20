@@ -5,62 +5,101 @@ import "./App.css";
 function App() {
   const requirements = [{
 title:"numberOfChar",
-name:"At least 8 characters"
+name:"At least 8 characters",
+isChecked:false
 
   },
   {
 title:"upperchar",
 name:"Contains uppercase character",
+isChecked:false
 
   },
   {
 title:"lowerchar",
 name:"Contains lowercase character",
+isChecked:false
 
   },
   {
 title:"digit",
 name:"Contains a digit",
+isChecked:false
 
   },
   {
 title:"specialChar",
-name:"Contains a special character"
+name:"Contains a special character",
+isChecked:false
 
   }
     
   ];
-  const requirementslist=requirements.map((requirement)=>{
+   const upperLetter=[ "A","B","C","D","E","F","G","H","I","J","K","L","M",
+  "N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+ 
+  
+  const lowerLetter=upperLetter.map((letters)=>letters.toLowerCase())
+  const [requirementData,setRequirement]=useState(requirements)
+  const digits=[0,1,2,3,4,5,6,7,8,9]
+   const [password,setPassword]=useState("")
+   
+  const getPassowrd=(event)=>{
+    const value=event.target.value
+    setPassword(value)
+    togggleRequirement(value)
+  }
+  //toggling requirements
+  const togggleRequirement=(value)=>{
+    for(let elem of value){
+  
+  if(upperLetter.includes(elem)){
+    setRequirement((prev)=>
+   prev.map((req)=>{
+        if(req.title==="upperchar"){
+          return {...req,isChecked:true}
+        }
+        console.log(req)
+        return req
+      })
+    )
+  }
+}
+
+  }
+  const requirementslist=requirementData.map((requirement)=>{
     return (
-        <li className="text-gray-400 flex gap-4">
-            <input type="radio" name={requirement.title} />
+        <li className="text-gray-400 flex gap-4" key={requirement.title}>
+            <input type="radio" checked={requirement.isChecked}  readOnly />
             <span>{requirement.name}</span>
         </li>
         
     )
   })
+ 
   return (
-    <div className="flex  items-center  justify-center my-20 border-2 border-gray-400 mx-100 py-5 ">
-      <form>
+    <div className="flex  items-center  justify-center my-20 border-2 border-gray-400  ">
+      <div >
         
         <h1 className="text-4xl font-bold ">Create Password</h1>
         <p className="text-xl text-gray-500 ">Enter a secure Password</p>
         <div className=" p-3  border-gray-400 border-2 flex justify-between " >
           <input 
-          className=" text-gray-400" 
+          className=" text-gray-400 h-full" 
             type="text"
             name="password"
+            onChange={getPassowrd}
             placeholder="Enter your password"
           />
           <i className="fas fa-eye-slash text-gray-400"></i>
           {/* <i className="fas fa-eye"></i>*/}
         </div>
         <h2 className="text-xl font-bold">Password Requirements</h2>
-        <ul>
+        <ul >
           {requirementslist}
         </ul>
         <button type="submit" className="bg-gray-500 py-3 px-10 text-white">Submit</button>
-      </form>
+      </div>
     </div>
   );
 }
