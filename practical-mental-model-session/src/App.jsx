@@ -118,7 +118,10 @@ else if(lowerLetter.includes(elem)){
         
     )
   })
- 
+ const [showPassword,setShowPassword]=useState(true)
+  function toggleShowPassword(){
+setShowPassword(prev=>!prev)
+  }
   return (
     <div className="flex  items-center  justify-center my-20 border-2 border-gray-400  ">
       <div >
@@ -128,13 +131,14 @@ else if(lowerLetter.includes(elem)){
         <div className=" p-3  border-gray-400 border-2 flex justify-between " >
           <input 
           className=" text-gray-400 h-full" 
-            type="text"
+            type={showPassword?"text":"password"}
             name="password"
             onChange={getPassowrd}
             placeholder="Enter your password"
           />
-          <i className="fas fa-eye-slash text-gray-400"></i>
-          {/* <i className="fas fa-eye"></i>*/}
+          {showPassword?<i onClick={toggleShowPassword} className="fas fa-eye  text-gray-400"></i>:<i onClick={toggleShowPassword} className="fas fa-eye-slash text-gray-400"></i>}
+          
+          {/* */}
         </div>
         <h2 className="text-xl font-bold">Password Requirements</h2>
         <ul >
