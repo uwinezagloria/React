@@ -122,17 +122,23 @@ else if(lowerLetter.includes(elem)){
   function toggleShowPassword(){
 setShowPassword(prev=>!prev)
   }
+  const handleSubmit=()=>{
+    setPassword("")
+    setRequirement(requirements.map(req => ({ ...req, isChecked: false })));
+
+  }
   return (
-    <div className="flex  items-center  justify-center my-20 border-2 border-gray-400  ">
-      <div >
+    <div className="flex  items-center   justify-center my-20 border-2 border-gray-400 rounded-2xl mx-50  ">
+      <div className="space-y-2 py-12" >
         
-        <h1 className="text-4xl font-bold ">Create Password</h1>
-        <p className="text-xl text-gray-500 ">Enter a secure Password</p>
-        <div className=" p-3  border-gray-400 border-2 flex justify-between " >
+        <h1 className="text-4xl font-bold  ">Create Password</h1>
+        <p className="text-xl text-gray-500  ">Enter a secure Password</p>
+        <div className=" p-3  border-gray-400 border-2 flex justify-between  rounded-3xl " >
           <input 
-          className=" text-gray-400 h-full" 
+          className=" text-gray-400  focus:outline-none" 
             type={showPassword?"text":"password"}
             name="password"
+            value={password}
             onChange={getPassowrd}
             placeholder="Enter your password"
           />
@@ -141,10 +147,10 @@ setShowPassword(prev=>!prev)
           {/* */}
         </div>
         <h2 className="text-xl font-bold">Password Requirements</h2>
-        <ul >
+        <ul  className="space-y-2">
           {requirementslist}
         </ul>
-        <button type="submit" className="bg-gray-500 py-3 px-10 text-white">Submit</button>
+        <button  onClick={handleSubmit}type="submit" className="bg-gray-500 py-3 px-30 text-white  rounded-4xl">Submit</button>
       </div>
     </div>
   );
