@@ -35,10 +35,11 @@ function App() {
     {/* />
     )
 })*/} 
+ 
   return (
     <>
     <Header />
-      <Main />
+      <Main  />
 
       <>
         {/*<Page></Page>*/}
