@@ -1,0 +1,36 @@
+import { useState } from "react";
+
+const Pad=(props)=>{
+ /**
+     * Challenge part 2:
+     * 1. Create a separate component called "Pad" and
+     *    replace the `button` above with our <Pad /> component
+     * 2. Pass the Pad component a prop called `color` with the
+     *    value of the same name from the `padsData` objects
+     * 3. In the Pad component, apply an inline style to the <button>
+     *    to set the backgroundColor of the button.
+     * 
+     * (We'll deal with the "on" property soon)
+     */
+      /**
+     * Challenge part 3:
+     * Our buttons got turned off by default! Update the code
+     * so if the button is "on", it has the className of "on".
+     */
+    /**
+ * Challenge: Create state controlling whether
+ * this pad is "on" or "off". Use the incoming
+ * `props.on` to determine the initial state.
+ * 
+ * Create an event listener so when the pad is clicked,
+ * it toggles from "on" to "off".
+ * 
+ * Goal: clicking each pad should toggle it on and off.
+ */
+//const [turnPad,setTurnPad]=useState(props.on)
+
+    return (
+        <button  onClick={()=>props.handleClick(props.id)}style={ {backgroundColor:props.color}} className={props.on?"on":undefined} ></button>
+    ) 
+}
+export default Pad;
