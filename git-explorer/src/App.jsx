@@ -6,11 +6,16 @@ import './App.css'
 import {Routes,Route} from "react-router-dom"
 import HomePage from './components/Home'
 import AboutPage from './components/About'
+import Navbar from './components/Navbar'
+import NotFound from './components/NotFound'
 function App() {
   return (
 <Routes>
-  <Route   path='/' element={<HomePage></HomePage>}></Route>
-  <Route path="/about" element={<AboutPage></AboutPage>}></Route>
+  <Route  path="/" element={<Navbar />} >
+  <Route   path='/' element={<HomePage></HomePage>} />
+  <Route path="/about" element={<AboutPage></AboutPage>} />
+  </Route>
+   <Route path="*" element={<NotFound />} />
 </Routes>
   )
 }
