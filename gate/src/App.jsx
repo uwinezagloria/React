@@ -12,8 +12,14 @@ import ToggleButtons from './components/ToggleButtonColor'
 import CardList from './components/ToggleCards'
 import Counter from './components/ReactuseReducerHook'
 import { FocusInput } from './components/useRefFocus'
+import { ToggleContext } from './components/Context'
+import { ToggleTheme } from './components/ToggleTheme'
+
 
 function App() {
+  const [background,setbackground]=useState("white")
+  const [textcolor,setTextColor]=useState("black")
+  
   return (<>
   <Password/>
   <CounterApp />
@@ -24,6 +30,9 @@ function App() {
   <CardList />
   <Counter/>
   <FocusInput />
+  <ToggleContext.Provider value={{background,setbackground,textcolor,setTextColor}} >
+    <ToggleTheme/>
+  </ToggleContext.Provider>
   </>)
 }
 
