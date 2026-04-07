@@ -14,11 +14,14 @@ import Counter from './components/ReactuseReducerHook'
 import { FocusInput } from './components/useRefFocus'
 import { ToggleContext } from './components/Context'
 import { ToggleTheme } from './components/ToggleTheme'
-
+import { PassingContext } from './components/Context'
+import { SiblingOne } from './components/Sibling1'
+import { SiblingTwo } from './components/Sibling2'
 
 function App() {
   const [background,setbackground]=useState("white")
   const [textcolor,setTextColor]=useState("black")
+const [inputData,setInputData]=useState("")
   
   return (<>
   <Password/>
@@ -33,6 +36,10 @@ function App() {
   <ToggleContext.Provider value={{background,setbackground,textcolor,setTextColor}} >
     <ToggleTheme/>
   </ToggleContext.Provider>
+  <PassingContext.Provider value={{inputData,setInputData}}>
+    <SiblingOne/>
+    <SiblingTwo/>
+  </PassingContext.Provider>
   </>)
 }
 
