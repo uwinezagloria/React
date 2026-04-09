@@ -28,9 +28,9 @@ const [inputData,setInputData]=useState("")
   <CounterApp />
   <FormUserReducer/>
   <UseEffect />
-  <NameTransferLists />
+  {/*<NameTransferLists />*/}
   <ToggleButtons/>
-  <CardList />
+   {/*<CardList />*/}
   <Counter/>
   <FocusInput />
   <ToggleContext.Provider value={{background,setbackground,textcolor,setTextColor}} >
