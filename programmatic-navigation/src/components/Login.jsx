@@ -1,8 +1,8 @@
 import { useState } from "react";
 import {useNavigate} from "react-router-dom"
-const Login=()=>{
-    const [username,setUsername]=useState("")
-    const [password,setPassword]=useState("")
+const Login=(props)=>{
+    const{setPassword,setUsername,setIsLoggedIn, username, 
+    password}=props
     const navigate=useNavigate()
     const handlePasswordInput=(event)=>{
         setPassword(event.target.value)
@@ -14,6 +14,7 @@ const Login=()=>{
         event.preventDefault();
         if(username==="user" && password==="1234"){
 navigate("/Dashboard")
+setIsLoggedIn(true)
         }
         else{
             alert("Invalid credentials")
