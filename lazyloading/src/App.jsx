@@ -10,6 +10,7 @@ function App() {
   const [show,setShow]=useState(false)
   const LazyComponent=React.lazy(()=> new Promise((resolve) => {
     setTimeout(() => {
+
       resolve(import("./component/LazyComponent"));
     }, 5000); // 5 seconds
   }))

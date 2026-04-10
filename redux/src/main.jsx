@@ -4,8 +4,9 @@ import './index.css'
 import App from './App.jsx'
 import {configureStore} from '@reduxjs/toolkit'
 import {Provider} from 'react-redux'
+import userReducer from "./features/users.jsx"
 const store=configureStore({
-  reducer:{}
+  reducer:{userReducer}
 })
 
 createRoot(document.getElementById('root')).render(
