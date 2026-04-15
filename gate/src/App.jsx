@@ -17,6 +17,7 @@ import { ToggleTheme } from './components/ToggleTheme'
 import { PassingContext } from './components/Context'
 import { SiblingOne } from './components/Sibling1'
 import { SiblingTwo } from './components/Sibling2'
+import Employees from './components/CustomHook'
 
 function App() {
   const [background,setbackground]=useState("white")
@@ -40,7 +41,9 @@ const [inputData,setInputData]=useState("")
     <SiblingOne/>
     <SiblingTwo/>
   </PassingContext.Provider>
+   <Employees/>
   </>)
+ 
 }
 
 export default App
